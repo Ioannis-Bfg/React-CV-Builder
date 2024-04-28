@@ -1,3 +1,4 @@
+import "../styles/personal.css";
 function PersonalDetails() {
   return (
     <div className="personal_details">
