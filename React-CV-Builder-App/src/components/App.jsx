@@ -1,4 +1,4 @@
-import PersonalDetails from "./Personal";
+import PersonalDetails from "./personal";
 import Education from "./education";
 import Experience from "./experience";
 

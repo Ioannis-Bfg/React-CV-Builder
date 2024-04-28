@@ -1,23 +1,26 @@
+import "../styles/education.css";
 function Education() {
   return (
     <div id="education">
       <div id="header_education">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="feather feather-award"
-        >
-          <circle cx="12" cy="8" r="7"></circle>
-          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-        </svg>
-        <h2>Education</h2>
+        <div id="header_education_title">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="feather feather-award"
+          >
+            <circle cx="12" cy="8" r="7"></circle>
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+          </svg>
+          <h2>Education</h2>
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -107,7 +110,10 @@ function EducationList(props) {
   return (
     <div id="education_list">
       {edu_list.map((item, index) => (
-        <div key={crypto.getRandomValues(new Uint32Array(1))[0]}>
+        <div
+          className="education_item"
+          key={crypto.getRandomValues(new Uint32Array(1))[0]}
+        >
           {item}
           <svg
             xmlns="http://www.w3.org/2000/svg"
