@@ -1,5 +1,11 @@
 import "../styles/personal.css";
-function PersonalDetails() {
+import PropTypes from "prop-types";
+function PersonalDetails({
+  handleChangeName,
+  handleChangeEmail,
+  handleChangePhone,
+  handleChangeAddress,
+}) {
   return (
     <div className="personal_details">
       <h2>Personal Details</h2>
@@ -9,6 +15,7 @@ function PersonalDetails() {
           type="text"
           form="personal_details"
           id="full_name"
+          onChange={handleChangeName}
           name="full_name"
           placeholder="Full Name"
         />
@@ -18,6 +25,7 @@ function PersonalDetails() {
           form="personal_details"
           id="email"
           name="email"
+          onChange={handleChangeEmail}
           placeholder="Email"
         />
         <label htmlFor="phone_number">Phone Number</label>
@@ -25,6 +33,7 @@ function PersonalDetails() {
           type="tel"
           form="personal_details"
           id="phone_number"
+          onChange={handleChangePhone}
           name="phone_number"
           placeholder="Phone Number"
         />
@@ -32,6 +41,7 @@ function PersonalDetails() {
         <input
           type="text"
           form="personal_details"
+          onChange={handleChangeAddress}
           id="address"
           name="address"
           placeholder="Your address (Optional)"
@@ -41,4 +51,10 @@ function PersonalDetails() {
   );
 }
 
+PersonalDetails.propTypes = {
+  handleChangeName: PropTypes.func.isRequired,
+  handleChangeEmail: PropTypes.func.isRequired,
+  handleChangePhone: PropTypes.func.isRequired,
+  handleChangeAddress: PropTypes.func.isRequired,
+};
 export default PersonalDetails;

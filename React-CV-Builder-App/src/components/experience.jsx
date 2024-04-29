@@ -1,23 +1,26 @@
+import "../styles/experience.css";
 function Experience() {
   return (
     <div id="experience">
       <div id="header_experience">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="feather feather-briefcase"
-        >
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-        </svg>
-        <h2>Experience</h2>
+        <div id="header_experience_title">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="feather feather-briefcase"
+          >
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          <h2>Experience</h2>
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -40,7 +43,7 @@ function Experience() {
 
 function AddExperience() {
   return (
-    <button>
+    <button id="add_experience_button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -103,12 +106,15 @@ function AddExperienceForm() {
     </div>
   );
 }
-function ExperienceList(props) {
+function ExperienceList() {
   const exp_list = ["Microsoft", "Amazon", "Google"];
   return (
     <div id="experience_list">
-      {exp_list.map((item, index) => (
-        <div key={crypto.getRandomValues(new Uint32Array(1))[0]}>
+      {exp_list.map((item) => (
+        <div
+          className="experience_item"
+          key={crypto.getRandomValues(new Uint32Array(1))[0]}
+        >
           {item}
           <svg
             xmlns="http://www.w3.org/2000/svg"

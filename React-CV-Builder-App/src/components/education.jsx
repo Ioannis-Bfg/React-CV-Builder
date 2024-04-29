@@ -105,11 +105,11 @@ function AddEducationForm() {
     </div>
   );
 }
-function EducationList(props) {
+function EducationList() {
   const edu_list = ["Cambridge", "Poli", "Uni of Patras"];
   return (
     <div id="education_list">
-      {edu_list.map((item, index) => (
+      {edu_list.map((item) => (
         <div
           className="education_item"
           key={crypto.getRandomValues(new Uint32Array(1))[0]}
