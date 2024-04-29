@@ -1,5 +1,5 @@
 import "../styles/education.css";
-function Education() {
+function Education({ handleSave }) {
   return (
     <div id="education">
       <div id="header_education">
@@ -35,7 +35,7 @@ function Education() {
           <polyline points="6 18 12 12 6 6"></polyline>
         </svg>
       </div>
-      <EducationList />
+      <AddEducationForm handleSave={handleSave} />
     </div>
   );
 }
@@ -62,10 +62,10 @@ function AddEducation() {
   );
 }
 
-function AddEducationForm() {
+function AddEducationForm({ handleSave }) {
   return (
     <div id="add_education_form">
-      <form action="">
+      <form onSubmit={handleSave}>
         <label htmlFor="school">School</label>
         <input
           type="text"
@@ -99,7 +99,7 @@ function AddEducationForm() {
           required
         />
 
-        <button>Save</button>
+        <button type="submit">Save</button>
         <button>Cancel</button>
       </form>
     </div>

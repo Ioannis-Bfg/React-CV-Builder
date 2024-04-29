@@ -9,6 +9,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [education, setEducation] = useState([]);
 
   const handleChangeInput = (event) => {
     setFullName(event.target.value);
@@ -25,6 +26,31 @@ function App() {
   const handleChangeAddress = (event) => {
     setAddress(event.target.value);
   };
+
+  const handleSave = (event) => {
+    event.preventDefault();
+    const formData = {
+      school: event.target.school.value,
+      degree: event.target.degree.value,
+      start_date: event.target.start_date.value,
+      end_date: event.target.end_date.value,
+      location: event.target.location.value,
+    };
+    setEducation((prevEducation) => [...prevEducation, formData]);
+  };
+
+  const addEducationObject = () => {
+    const educationObject = {
+      school: "Example School",
+      degree: "Example Degree",
+      start_date: "2021-01-01",
+      end_date: "2022-12-31",
+      location: "Example Location",
+    };
+    setEducation((prevEducation) => [...prevEducation, educationObject]);
+    console.log(education);
+  };
+
   return (
     <div className="App">
       <div id="inputs">
@@ -34,11 +60,18 @@ function App() {
           handleChangePhone={handleChangePhone}
           handleChangeAddress={handleChangeAddress}
         />
-        <Education />
+        <Education handleSave={handleSave} />
         <Experience />
       </div>
       <div id="page">
-        <CV fullName={fullName} email={email} phone={phone} address={address} />
+        <button onClick={addEducationObject}>Add Education Object</button>
+        <CV
+          fullName={fullName}
+          email={email}
+          phone={phone}
+          address={address}
+          education={education}
+        />
       </div>
     </div>
   );
