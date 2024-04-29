@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function CV({ fullName, email, phone, address, education }) {
+function CV({ fullName, email, phone, address, education, experience }) {
   return (
     <div>
       <h1>CV Page</h1>
@@ -16,6 +16,18 @@ function CV({ fullName, email, phone, address, education }) {
             <p>Start Date: {edu.start_date}</p>
             <p>End Date: {edu.end_date}</p>
             <p>Location: {edu.location}</p>
+          </div>
+        ))}
+      </div>
+      <div>
+        {experience.map((exp) => (
+          <div key={exp.company}>
+            <h1>{exp.company}</h1>
+            <p>Degree: {exp.degree}</p>
+            <p>Position : {exp.position}</p>
+            <p>Start Date: {exp.start_date}</p>
+            <p>End Date: {exp.end_date}</p>
+            <p>Location: {exp.location}</p>
           </div>
         ))}
       </div>

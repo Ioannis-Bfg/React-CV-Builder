@@ -10,6 +10,7 @@ function App() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [education, setEducation] = useState([]);
+  const [experience, setExperience] = useState([]);
 
   const handleChangeInput = (event) => {
     setFullName(event.target.value);
@@ -39,6 +40,18 @@ function App() {
     setEducation((prevEducation) => [...prevEducation, formData]);
   };
 
+  const handleExpSave = (event) => {
+    event.preventDefault();
+    const ExpformData = {
+      company: event.target.company.value,
+      position: event.target.position.value,
+      start_date: event.target.start_date.value,
+      end_date: event.target.end_date.value,
+      location: event.target.location.value,
+    };
+    setExperience((prevExperience) => [...prevExperience, ExpformData]);
+  };
+
   const addEducationObject = () => {
     const educationObject = {
       school: "Example School",
@@ -61,7 +74,7 @@ function App() {
           handleChangeAddress={handleChangeAddress}
         />
         <Education handleSave={handleSave} />
-        <Experience />
+        <Experience handleExpSave={handleExpSave} />
       </div>
       <div id="page">
         <button onClick={addEducationObject}>Add Education Object</button>
@@ -71,6 +84,7 @@ function App() {
           phone={phone}
           address={address}
           education={education}
+          experience={experience}
         />
       </div>
     </div>

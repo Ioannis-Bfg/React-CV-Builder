@@ -1,5 +1,5 @@
 import "../styles/experience.css";
-function Experience() {
+function Experience({ handleExpSave }) {
   return (
     <div id="experience">
       <div id="header_experience">
@@ -35,8 +35,7 @@ function Experience() {
           <polyline points="6 18 12 12 6 6"></polyline>
         </svg>
       </div>
-      <ExperienceList />
-      <AddExperience />
+      <AddExperienceForm handleExpSave={handleExpSave} />
     </div>
   );
 }
@@ -63,10 +62,10 @@ function AddExperience() {
   );
 }
 
-function AddExperienceForm() {
+function AddExperienceForm({ handleExpSave }) {
   return (
     <div id="add_experience_form">
-      <form action="">
+      <form onSubmit={handleExpSave}>
         <label htmlFor="company">Company</label>
         <input
           type="text"
@@ -100,7 +99,7 @@ function AddExperienceForm() {
           required
         />
 
-        <button>Save</button>
+        <button type="submit">Save</button>
         <button>Cancel</button>
       </form>
     </div>
