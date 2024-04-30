@@ -40,6 +40,7 @@ function App() {
       start_date: event.target.start_date.value,
       end_date: event.target.end_date.value,
       location: event.target.location.value,
+      unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
     };
     event.target.reset();
     setEducation((prevEducation) => [...prevEducation, formData]);
@@ -65,10 +66,10 @@ function App() {
       start_date: "2021-01-01",
       end_date: "2022-12-31",
       location: "Example Location",
+      unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
     };
 
     setEducation((prevEducation) => [...prevEducation, educationObject]);
-    console.log(education);
   };
 
   const addExperienceObject = () => {
@@ -84,6 +85,13 @@ function App() {
     console.log(experience);
   };
 
+  const education_remove = (unique_id) => {
+    console.log(unique_id);
+    setEducation((prevEducation) =>
+      prevEducation.filter((item) => item.unique_id !== unique_id)
+    );
+  };
+
   return (
     <div className="App">
       <div id="inputs">
@@ -97,6 +105,7 @@ function App() {
           handleSave={handleSave}
           toggleForm={toggleEducationForm}
           education={education}
+          education_remove={education_remove}
         />
         <Experience handleExpSave={handleExpSave} experience={experience} />
       </div>

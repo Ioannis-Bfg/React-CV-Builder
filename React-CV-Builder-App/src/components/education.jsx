@@ -1,7 +1,7 @@
 import "../styles/education.css";
 import React, { useState } from "react";
 
-function Education({ handleSave, education }) {
+function Education({ handleSave, education, education_remove }) {
   const [showForm, setShowForm] = useState(false);
 
   const toggleForm = () => {
@@ -46,7 +46,10 @@ function Education({ handleSave, education }) {
         <AddEducationForm handleSave={handleSave} toggleForm={toggleForm} />
       ) : (
         <>
-          <EducationList education={education} />
+          <EducationList
+            education={education}
+            education_remove={education_remove}
+          />
           <AddEducation handleSwitch={toggleForm} />
         </>
       )}
@@ -124,30 +127,31 @@ function AddEducationForm({ handleSave, toggleForm }) {
     </div>
   );
 }
-function EducationList({ education }) {
-  console.log(education[0]);
+function EducationList({ education, education_remove }) {
   return (
     <div id="education_list">
       {education.map((item) => (
-        <div
-          className="education_item"
-          key={crypto.getRandomValues(new Uint32Array(1))[0]}
-        >
+        <div className="education_item" key={item.unique_id}>
           <p>{item.school}</p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          <button
+            id="edu_view"
+            onClick={() => education_remove(item.unique_id)}
           >
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </button>
         </div>
       ))}
     </div>

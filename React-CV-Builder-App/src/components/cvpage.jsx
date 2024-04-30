@@ -10,7 +10,7 @@ function CV({ fullName, email, phone, address, education, experience }) {
       <p>Address: {address}</p>
       <div>
         {education.map((edu) => (
-          <div key={edu.school}>
+          <div key={crypto.getRandomValues(new Uint32Array(1))[0]}>
             <h1>{edu.school}</h1>
             <p>Degree: {edu.degree}</p>
             <p>Start Date: {edu.start_date}</p>
