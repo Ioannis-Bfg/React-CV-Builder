@@ -11,9 +11,13 @@ function App() {
   const [address, setAddress] = useState("");
   const [education, setEducation] = useState([]);
   const [experience, setExperience] = useState([]);
+  const [showEducationForm, setShowEducationForm] = useState(false);
 
   const handleChangeInput = (event) => {
     setFullName(event.target.value);
+  };
+  const toggleEducationForm = () => {
+    setShowEducationForm((prevShow) => !prevShow);
   };
 
   const handleChangeEmail = (event) => {
@@ -37,6 +41,7 @@ function App() {
       end_date: event.target.end_date.value,
       location: event.target.location.value,
     };
+    event.target.reset();
     setEducation((prevEducation) => [...prevEducation, formData]);
   };
 
@@ -49,6 +54,7 @@ function App() {
       end_date: event.target.end_date.value,
       location: event.target.location.value,
     };
+    event.target.reset();
     setExperience((prevExperience) => [...prevExperience, ExpformData]);
   };
 
@@ -60,8 +66,22 @@ function App() {
       end_date: "2022-12-31",
       location: "Example Location",
     };
+
     setEducation((prevEducation) => [...prevEducation, educationObject]);
     console.log(education);
+  };
+
+  const addExperienceObject = () => {
+    const experienceObject = {
+      company: "Example Company",
+      position: "Example Position",
+      start_date: "2021-01-01",
+      end_date: "2022-12-31",
+      location: "Example Location",
+    };
+
+    setExperience((prevExperience) => [...prevExperience, experienceObject]);
+    console.log(experience);
   };
 
   return (
@@ -73,11 +93,16 @@ function App() {
           handleChangePhone={handleChangePhone}
           handleChangeAddress={handleChangeAddress}
         />
-        <Education handleSave={handleSave} />
-        <Experience handleExpSave={handleExpSave} />
+        <Education
+          handleSave={handleSave}
+          toggleForm={toggleEducationForm}
+          education={education}
+        />
+        <Experience handleExpSave={handleExpSave} experience={experience} />
       </div>
       <div id="page">
         <button onClick={addEducationObject}>Add Education Object</button>
+        <button onClick={addExperienceObject}>Add Experience Object</button>
         <CV
           fullName={fullName}
           email={email}

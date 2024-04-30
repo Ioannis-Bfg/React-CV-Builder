@@ -1,5 +1,11 @@
 import "../styles/experience.css";
-function Experience({ handleExpSave }) {
+import React, { useState } from "react";
+function Experience({ handleExpSave, experience }) {
+  const [showForm, setShowForm] = useState(false);
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
   return (
     <div id="experience">
       <div id="header_experience">
@@ -35,14 +41,24 @@ function Experience({ handleExpSave }) {
           <polyline points="6 18 12 12 6 6"></polyline>
         </svg>
       </div>
-      <AddExperienceForm handleExpSave={handleExpSave} />
+      {showForm ? (
+        <AddExperienceForm
+          handleExpSave={handleExpSave}
+          toggleForm={toggleForm}
+        />
+      ) : (
+        <>
+          <ExperienceList experience={experience} />
+          <AddExperience handleSwitch={toggleForm} />
+        </>
+      )}
     </div>
   );
 }
 
-function AddExperience() {
+function AddExperience({ handleSwitch }) {
   return (
-    <button id="add_experience_button">
+    <button id="add_experience_button" onClick={handleSwitch}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -62,10 +78,15 @@ function AddExperience() {
   );
 }
 
-function AddExperienceForm({ handleExpSave }) {
+function AddExperienceForm({ handleExpSave, toggleForm }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleExpSave(event);
+    toggleForm();
+  }
   return (
     <div id="add_experience_form">
-      <form onSubmit={handleExpSave}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="company">Company</label>
         <input
           type="text"
@@ -105,16 +126,15 @@ function AddExperienceForm({ handleExpSave }) {
     </div>
   );
 }
-function ExperienceList() {
-  const exp_list = ["Microsoft", "Amazon", "Google"];
+function ExperienceList({ experience }) {
   return (
     <div id="experience_list">
-      {exp_list.map((item) => (
+      {experience.map((item) => (
         <div
           className="experience_item"
           key={crypto.getRandomValues(new Uint32Array(1))[0]}
         >
-          {item}
+          <p>{item.company}</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

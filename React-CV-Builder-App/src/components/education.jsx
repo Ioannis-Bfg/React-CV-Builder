@@ -1,5 +1,12 @@
 import "../styles/education.css";
-function Education({ handleSave }) {
+import React, { useState } from "react";
+
+function Education({ handleSave, education }) {
+  const [showForm, setShowForm] = useState(false);
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
   return (
     <div id="education">
       <div id="header_education">
@@ -35,14 +42,21 @@ function Education({ handleSave }) {
           <polyline points="6 18 12 12 6 6"></polyline>
         </svg>
       </div>
-      <AddEducationForm handleSave={handleSave} />
+      {showForm ? (
+        <AddEducationForm handleSave={handleSave} toggleForm={toggleForm} />
+      ) : (
+        <>
+          <EducationList education={education} />
+          <AddEducation handleSwitch={toggleForm} />
+        </>
+      )}
     </div>
   );
 }
 
-function AddEducation() {
+function AddEducation({ handleSwitch }) {
   return (
-    <button>
+    <button id="add_education_button" onClick={handleSwitch}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -62,10 +76,15 @@ function AddEducation() {
   );
 }
 
-function AddEducationForm({ handleSave }) {
+function AddEducationForm({ handleSave, toggleForm }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleSave(event);
+    toggleForm();
+  }
   return (
     <div id="add_education_form">
-      <form onSubmit={handleSave}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="school">School</label>
         <input
           type="text"
@@ -105,16 +124,16 @@ function AddEducationForm({ handleSave }) {
     </div>
   );
 }
-function EducationList() {
-  const edu_list = ["Cambridge", "Poli", "Uni of Patras"];
+function EducationList({ education }) {
+  console.log(education[0]);
   return (
     <div id="education_list">
-      {edu_list.map((item) => (
+      {education.map((item) => (
         <div
           className="education_item"
           key={crypto.getRandomValues(new Uint32Array(1))[0]}
         >
-          {item}
+          <p>{item.school}</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
