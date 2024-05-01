@@ -27,7 +27,7 @@ function Education({ handleSave, education, education_remove }) {
 
   return (
     <div id="education">
-      <div id="header_education">
+      <div id="header_education" onClick={dropdown}>
         <div id="header_education_title">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ function Education({ handleSave, education, education_remove }) {
           </svg>
           <h2>Education</h2>
         </div>
-        <button id="edu_dropdown" onClick={dropdown}>
+        <button id="edu_dropdown">
           <svg
             id="edu_dropdown_icon"
             xmlns="http://www.w3.org/2000/svg"
