@@ -18,6 +18,7 @@
 #personal_details input {
   transform: translateX(3px);
   border-radius: 10px;
+  /* ADD focus lighter blue color and drop shadow with blur and blue color for glow effect */
 }
 
 #personal_details label {

@@ -90,7 +90,9 @@ function AddExperienceForm({ handleExpSave, toggleForm }) {
   return (
     <div id="add_experience_form">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="company">Company</label>
+        <label htmlFor="company" id="experience_form">
+          Company
+        </label>
         <input
           type="text"
           name="company"
