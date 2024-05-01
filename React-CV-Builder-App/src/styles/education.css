@@ -1,37 +1,147 @@
 #education {
-  font-family: "Roboto", sans-serif;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background-color: rgb(243, 243, 243);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 10px;
-  width: fit-content;
+  justify-content: space-around;
   margin: 10px;
+  gap: 0px;
+  /* padding-top: 10px; */
+  border-radius: 10px;
 }
 
 #header_education {
   display: flex;
+  background-color: white;
   justify-content: space-between;
-  gap: 50px;
   align-items: center;
+  padding: 16px;
+  /* margin-bottom: 20px; */
+  border-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transition: border-radius 0.6s ease;
+}
+
+#header_education h2 {
+  font-weight: 800;
+  font-size: 1.4rem;
 }
 
 #header_education_title {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  gap: 5px;
 }
 
 #header_education_title svg {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
+
+#header_education button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  transform: rotate(-90deg);
+}
+
+#header_education > button svg {
+  transition: transform 0.3s ease;
+}
+
+/* ///////////EDUCATION FORM/////////////// */
+
+#education_form {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  background-color: white;
+  padding: 15px;
+}
+#education_form input {
+  border-radius: 8px;
+}
+#school_input {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  display: flex;
+}
+
+#degree_input {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+}
+
+#location_input {
+  grid-column: 1 / span 2;
+  grid-row: 4;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+input {
+  width: 100%;
+}
+
+#education_form button {
+  cursor: pointer;
+}
+
+#edu_cancel {
+  background-color: transparent;
+  border: none;
+  border: 1px solid rgb(56, 56, 56);
+  color: hsla(0, 0%, 21%, 0.541);
+  font-weight: 600;
+  border-radius: 10px;
+  transition: color 0.1s ease-in, border 0.1s ease-in;
+}
+
+#edu_save {
+  background-color: rgb(75, 156, 233);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background-color 0.1s ease-in, transform 0.1s ease-out;
+}
+
+#edu_save:active {
+  transform: translateY(2px);
+  transition: transform 0.3s ease-out;
+}
+
+#edu_save:hover {
+  background-color: rgb(26, 129, 224);
+  transition: background-color 0.3s ease-out;
+}
+
+#edu_cancel:hover {
+  color: hsla(0, 0%, 21%, 0.836);
+  border: 1px solid hsla(0, 0%, 22%, 0.733);
+  transition: color 0.3s ease-out, border 0.3s ease-out;
+}
+
+#edu_cancel:active {
+  transform: translateY(2px);
+  transition: transform 0.3s ease-out;
+}
+
+/* ////////EDUCATION LIST ///////////////*/
 
 #education_list {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  margin-bottom: 3px;
+  margin-top: 3px;
 }
 
 .education_item {
@@ -39,8 +149,81 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
+  padding: 15px;
+  font-weight: 600;
 }
-label {
-  margin-top: 5px;
-  margin-bottom: 5px;
+
+.edu_view {
+  border: none;
+  opacity: 0.5;
+  background-color: transparent;
+  transition: opacity 0.25s ease;
+}
+
+.edu_view svg {
+  width: 20px;
+  height: 20px;
+  scale: 1.1;
+}
+
+.edu_view:hover {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+/* /////////////////EDUCATION BUTTON///////// */
+
+#add_education_button_wrapper {
+  background-color: white;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#add_education_button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 30px;
+  padding: 8px 15px;
+  border: none;
+  border: 6px solid hsla(0, 0%, 89%, 0.664);
+  background-color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#add_education_button svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* //////////////// DROPDOWN//////////// */
+#dropdown_content {
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: max-height 0.25s ease-out;
+}
+
+#dropdown_content.expanded {
+  max-height: 500px; /* Adjust as needed for your content */
+  transition: max-height 0.25s ease-in;
+}
+
+/* //////////////////////// */
+.rotated {
+  transform: rotate(-180deg);
+  transition: transform 0.3s ease;
+}
+.rounded {
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  transition: border-radius 0.2s ease-in;
 }

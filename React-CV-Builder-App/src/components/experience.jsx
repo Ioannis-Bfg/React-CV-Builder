@@ -1,6 +1,6 @@
 import "../styles/experience.css";
 import React, { useState } from "react";
-function Experience({ handleExpSave, experience }) {
+function Experience({ handleExpSave, experience, experience_remove }) {
   const [showForm, setShowForm] = useState(false);
 
   const toggleForm = () => {
@@ -48,7 +48,10 @@ function Experience({ handleExpSave, experience }) {
         />
       ) : (
         <>
-          <ExperienceList experience={experience} />
+          <ExperienceList
+            experience={experience}
+            experience_remove={experience_remove}
+          />
           <AddExperience handleSwitch={toggleForm} />
         </>
       )}
@@ -121,34 +124,41 @@ function AddExperienceForm({ handleExpSave, toggleForm }) {
         />
 
         <button type="submit">Save</button>
-        <button>Cancel</button>
+        <button type="button" onClick={toggleForm}>
+          Cancel
+        </button>
       </form>
     </div>
   );
 }
-function ExperienceList({ experience }) {
+function ExperienceList({ experience, experience_remove }) {
   return (
     <div id="experience_list">
       {experience.map((item) => (
-        <div
-          className="experience_item"
-          key={crypto.getRandomValues(new Uint32Array(1))[0]}
-        >
+        <div className="experience_item" key={item.unique_id}>
           <p>{item.company}</p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          <button
+            id="exp_view"
+            onClick={() => experience_remove(item.unique_id)}
           >
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              class="feather feather-trash-2"
+            >
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              <line x1="10" y1="11" x2="10" y2="17"></line>
+              <line x1="14" y1="11" x2="14" y2="17"></line>
+            </svg>
+          </button>
         </div>
       ))}
     </div>

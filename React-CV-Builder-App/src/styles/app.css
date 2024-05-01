@@ -1,0 +1,28 @@
+.App {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(226, 226, 226);
+  height: 100vh;
+  padding: 4vh 20vw;
+  gap: 50px;
+  font-family: sans-serif;
+}
+
+#inputs {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+#page {
+  flex: 4;
+  background-color: white;
+}
+
+input {
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(230, 230, 230);
+  padding: 4px;
+  padding-left: 10px;
+}

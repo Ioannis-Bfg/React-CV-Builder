@@ -3,6 +3,7 @@ import Education from "./education";
 import Experience from "./experience";
 import CV from "./cvpage";
 import { useState } from "react";
+import "../styles/app.css";
 
 function App() {
   const [fullName, setFullName] = useState("");
@@ -54,6 +55,7 @@ function App() {
       start_date: event.target.start_date.value,
       end_date: event.target.end_date.value,
       location: event.target.location.value,
+      unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
     };
     event.target.reset();
     setExperience((prevExperience) => [...prevExperience, ExpformData]);
@@ -79,6 +81,7 @@ function App() {
       start_date: "2021-01-01",
       end_date: "2022-12-31",
       location: "Example Location",
+      unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
     };
 
     setExperience((prevExperience) => [...prevExperience, experienceObject]);
@@ -90,6 +93,23 @@ function App() {
     setEducation((prevEducation) =>
       prevEducation.filter((item) => item.unique_id !== unique_id)
     );
+  };
+
+  const experience_remove = (unique_id) => {
+    console.log(unique_id);
+    setExperience((prevExperience) =>
+      prevExperience.filter((item) => item.unique_id !== unique_id)
+    );
+  };
+
+  const handleReset = () => {
+    setFullName("");
+    setEmail("");
+    setPhone("");
+    setAddress("");
+    setEducation([]);
+    setExperience([]);
+    setShowEducationForm(false);
   };
 
   return (
@@ -107,11 +127,16 @@ function App() {
           education={education}
           education_remove={education_remove}
         />
-        <Experience handleExpSave={handleExpSave} experience={experience} />
+        <Experience
+          handleExpSave={handleExpSave}
+          experience={experience}
+          experience_remove={experience_remove}
+        />
       </div>
       <div id="page">
         <button onClick={addEducationObject}>Add Education Object</button>
         <button onClick={addExperienceObject}>Add Experience Object</button>
+        <button onClick={handleReset}>Reset</button>
         <CV
           fullName={fullName}
           email={email}
