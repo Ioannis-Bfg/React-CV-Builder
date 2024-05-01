@@ -50,11 +50,19 @@
   border: none;
   display: flex;
   cursor: pointer;
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
 }
 
-#header_education > button svg {
+#edu_dropdown_icon {
+  transform: rotate(90deg);
+  transform-origin: center;
   transition: transform 0.3s ease;
+}
+
+#edu_dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ///////////EDUCATION FORM/////////////// */
@@ -225,8 +233,8 @@ input {
 }
 
 /* //////////////////////// */
-.rotated {
-  transform: rotate(-180deg);
+#edu_dropdown_icon.rotated {
+  transform: rotate(-90deg);
   transition: transform 0.3s ease;
 }
 .rounded {

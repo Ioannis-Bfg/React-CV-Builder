@@ -46,22 +46,21 @@ function Education({ handleSave, education, education_remove }) {
           </svg>
           <h2>Education</h2>
         </div>
-        <button id="edu_dropdown">
-          <svg
-            id="edu_dropdown_icon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="6 18 12 12 6 6"></polyline>
-          </svg>
-        </button>
+
+        <svg
+          id="edu_dropdown_icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="6 18 12 12 6 6"></polyline>
+        </svg>
       </div>
       <div id="dropdown_content">
         {showForm ? (
