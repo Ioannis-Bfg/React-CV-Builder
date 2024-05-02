@@ -28,7 +28,7 @@
 #header_education h2 {
   user-select: none;
   font-weight: 800;
-  font-size: 1.4rem;
+  font-size: 1.4em;
 }
 
 #header_education_title {
@@ -38,8 +38,10 @@
 }
 
 #header_education_title svg {
-  width: 25px;
-  height: 25px;
+  max-width: 24px;
+  max-height: 24px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 #header_education button {
@@ -226,8 +228,10 @@ input {
 }
 
 .edu_view svg {
-  width: 20px;
-  height: 20px;
+  min-width: 15px;
+  min-height: 15px;
+  max-width: 20px;
+  max-height: 20px;
   scale: 1.1;
 }
 
@@ -261,7 +265,7 @@ input {
   border: 6px solid hsla(0, 0%, 89%, 0.664);
   background-color: white;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.95em;
   transition: background-color 0.2s ease-in, color 0.2s ease-in;
 }
 
@@ -306,4 +310,44 @@ input {
 
 .rounded:hover {
   background-color: white !important;
+}
+
+@media screen and (max-width: 1439px) {
+  #education-form {
+    grid-template-rows: repeat(6, auto);
+  }
+
+  #start_date {
+    grid-column: 2 / span 3;
+    grid-row: 3;
+  }
+
+  #end_date {
+    grid-row: 4;
+    grid-column: 2 / span 3;
+  }
+  #end_date_input {
+    grid-row: 4;
+    grid-column: 1;
+  }
+
+  #location_input {
+    grid-row: 5;
+  }
+
+  #location {
+    grid-row: 5;
+  }
+
+  #edu_cancel {
+    grid-row: 6;
+  }
+
+  #edu_save {
+    grid-row: 6;
+  }
+
+  #edu_dropdown_icon {
+    display: none;
+  }
 }

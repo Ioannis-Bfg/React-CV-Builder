@@ -27,6 +27,7 @@
 #personal_details input {
   transform: translateX(3px);
   border-radius: 10px;
+  z-index: 1;
   font-weight: 400;
   padding: 8px 10px;
   /* ADD focus lighter blue color and drop shadow with blur and blue color for glow effect */

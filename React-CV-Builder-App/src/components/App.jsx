@@ -2,12 +2,13 @@ import PersonalDetails from "./personal";
 import Education from "./education";
 import Experience from "./experience";
 import CV from "./cvpage";
+import Modal from "./modal";
 import { useState } from "react";
 import html2canvas from "html2canvas";
 import "../styles/app.css";
 import sample from "../assets/sample_prof.jpg?url";
 import Menu from "./menu";
-import { useEffect } from "react";
+import { React, useEffect } from "react";
 
 function App() {
   useEffect(() => {
@@ -21,6 +22,7 @@ function App() {
   const [experience, setExperience] = useState([]);
   const [showEducationForm, setShowEducationForm] = useState(false);
   const [previewSrc, setPreviewSrc] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChangeInput = (event) => {
     setFullName(event.target.value);
@@ -40,6 +42,9 @@ function App() {
   const handleChangeAddress = (event) => {
     setAddress(event.target.value);
   };
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleSave = (event) => {
     event.preventDefault();
@@ -125,6 +130,12 @@ function App() {
     const file = event.target.files[0];
     const reader = new FileReader();
 
+    // Check if the file size is within the limit
+    if (file.size > 1.5 * 1024 * 1024) {
+      alert("File size exceeds the limit of 1.5MB");
+      return;
+    }
+
     reader.onload = (e) => {
       setPreviewSrc(e.target.result);
     };
@@ -165,16 +176,16 @@ function App() {
       {
         school: "University of Thessaloniki",
         degree: "Bachelor of Science in Computer Engineering",
-        start_date: "09/2013",
-        end_date: "07/2018",
+        start_date: "09-2013",
+        end_date: "07-2018",
         location: "Thessaloniki",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
       },
       {
         school: "University of Athens",
         degree: "Master of Science in Library and Information Science",
-        start_date: "09/2018",
-        end_date: "07/2020",
+        start_date: "09-2018",
+        end_date: "07-2020",
         location: "Athens",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
       },
@@ -185,15 +196,15 @@ function App() {
       {
         company: "Tech4Greece",
         position: "Bachelor of Science in Computer Engineering",
-        start_date: "07/2018",
-        end_date: "09/2019",
+        start_date: "07-2018",
+        end_date: "09-2019",
         location: "Thessaloniki",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
       },
       {
         company: "Pythia Technologies",
         position: "Master of Science in Library and Information Science",
-        start_date: "09/2020",
+        start_date: "09-2020",
         end_date: "Present",
         location: "Athens",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
@@ -201,7 +212,7 @@ function App() {
       {
         company: "Greece Tech Hub",
         position: "Founder, Chairman",
-        start_date: "09/2020",
+        start_date: "09-2020",
         end_date: "Present",
         location: "Athens",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
@@ -209,7 +220,7 @@ function App() {
       {
         company: "Tech4Greece",
         position: "Founder, CEO",
-        start_date: "09/2021",
+        start_date: "09-2021",
         end_date: "Present",
         location: "Athens",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
@@ -242,7 +253,7 @@ function App() {
           </svg>
         </button>
 
-        <button id="info_button">
+        <button type="button" id="info_button" onClick={openModal}>
           <p>Info</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -261,6 +272,7 @@ function App() {
           </svg>
         </button>
       </div>
+      <Modal isOpen={isModalOpen} close={closeModal} />
       <div id="inputs">
         <Menu handleReset={handleReset} handleExport={handleExportImage} />
         <PersonalDetails

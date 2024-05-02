@@ -38,8 +38,10 @@
 }
 
 #header_experience_title svg {
-  width: 25px;
-  height: 25px;
+  max-width: 24px;
+  max-height: 24px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 #header_experience button {
@@ -297,4 +299,44 @@ input {
 
 .rounded_exp:hover {
   background-color: white !important;
+}
+
+@media screen and (max-width: 1439px) {
+  #experience-form {
+    grid-template-rows: repeat(6, auto);
+  }
+
+  #start_date_exp {
+    grid-column: 2 / span 3;
+    grid-row: 3;
+  }
+
+  #end_date_exp {
+    grid-row: 4;
+    grid-column: 2 / span 3;
+  }
+  #end_date_exp_input {
+    grid-row: 4;
+    grid-column: 1;
+  }
+
+  #location_exp_input {
+    grid-row: 5;
+  }
+
+  #location_exp {
+    grid-row: 5;
+  }
+
+  #exp_cancel {
+    grid-row: 6;
+  }
+
+  #exp_save {
+    grid-row: 6;
+  }
+
+  #exp_dropdown_icon {
+    display: none;
+  }
 }

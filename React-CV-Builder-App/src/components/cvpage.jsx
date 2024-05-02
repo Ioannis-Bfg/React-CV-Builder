@@ -13,7 +13,7 @@ function CV({
   return (
     <>
       <div id="user_personal">
-        <img id="preview" src={previewSrc} alt="Your Image" />
+        <img id="preview" src={previewSrc} />
         <div id="user_personal_info" className="info_wrapper">
           <p id="user-personal_info_name">{fullName}</p>
           <div id="user_personal_info_extra">

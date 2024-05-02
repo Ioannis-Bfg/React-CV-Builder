@@ -8,7 +8,6 @@
   /* -webkit-box-shadow: 4px 4px 10px 3px rgba(38, 83, 179, 1);
   box-shadow: 4px 4px 10px 3px rgba(38, 83, 179, 1); */
   border-radius: 50%;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +42,7 @@
 }
 
 .info p {
-  font-size: 1.05rem;
+  font-size: 1.05em;
 }
 
 .info_wrapper {
@@ -54,7 +53,7 @@
 }
 
 #user-personal_info_name {
-  font-size: 1.8rem;
+  font-size: 1.8em;
   font-weight: 700;
 }
 
@@ -84,7 +83,7 @@
 }
 
 #user_education_heading {
-  font-size: 1.6rem;
+  font-size: 1.6em;
   font-weight: 600;
   color: rgb(26, 129, 224);
 }
@@ -119,7 +118,7 @@
 }
 
 #user_experience_heading {
-  font-size: 1.6rem;
+  font-size: 1.6em;
   font-weight: 600;
   color: rgb(26, 129, 224);
 }
@@ -132,4 +131,21 @@
 
 .user_experience_module_right p:first-child {
   font-weight: 800;
+}
+
+@media screen and (max-width: 1589px) {
+  #user_personal {
+    font-size: 0.8em;
+  }
+  #user_education {
+    font-size: 0.8em;
+  }
+
+  #user_experience {
+    font-size: 0.8em;
+  }
+  #preview {
+    width: 130px;
+    height: 130px;
+  }
 }
