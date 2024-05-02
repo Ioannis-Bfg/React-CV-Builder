@@ -92,8 +92,10 @@ function CV({
         ))}
       </div>
       <div id="user_experience">
-        <div id="user_experience_heading">EXPERIENCE</div>
-        <div id="user_experience_line"></div>
+        <div id="user_experience_heading_wrapper">
+          <div id="user_experience_heading">EXPERIENCE</div>
+          <div id="user_experience_line"></div>
+        </div>
         {experience.map((exp) => (
           <div
             key={crypto.getRandomValues(new Uint32Array(1))[0]}

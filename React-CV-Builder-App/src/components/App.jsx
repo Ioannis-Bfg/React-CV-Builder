@@ -5,9 +5,14 @@ import CV from "./cvpage";
 import { useState } from "react";
 import html2canvas from "html2canvas";
 import "../styles/app.css";
+import sample from "../assets/sample_prof.jpg?url";
 import Menu from "./menu";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    addDefaultProfile();
+  }, []);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -150,26 +155,27 @@ function App() {
 
   const addDefaultProfile = () => {
     handleReset();
-    setFullName("John Doe");
-    setEmail("john.doe@example.com");
-    setPhone("123-456-7890");
-    setAddress("123 Main Street, Anytown, USA");
+    setFullName("Georgios Papadopoulos");
+    setEmail("gpapadopoulos@gmail.com");
+    setPhone("6943033615");
+    setAddress("Thessaloniki, Greece");
+    setPreviewSrc(sample);
 
     const exampleEducations = [
       {
-        school: "Example School 1",
-        degree: "Example Degree 1",
-        start_date: "01/2019",
-        end_date: "12/2021",
-        location: "Example Location 1",
+        school: "University of Thessaloniki",
+        degree: "Bachelor of Science in Computer Engineering",
+        start_date: "09/2013",
+        end_date: "07/2018",
+        location: "Thessaloniki",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
       },
       {
-        school: "Example School 2",
-        degree: "Example Degree 2",
-        start_date: "01/2022",
-        end_date: "12/2024",
-        location: "Example Location 2",
+        school: "University of Athens",
+        degree: "Master of Science in Library and Information Science",
+        start_date: "09/2018",
+        end_date: "07/2020",
+        location: "Athens",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
       },
     ];
@@ -177,27 +183,35 @@ function App() {
 
     const exampleExperiences = [
       {
-        company: "Example Company 1",
-        position: "Example Position 1",
-        start_date: "01-2018",
-        end_date: "12-2019",
-        location: "Example Location 1",
+        company: "Tech4Greece",
+        position: "Bachelor of Science in Computer Engineering",
+        start_date: "07/2018",
+        end_date: "09/2019",
+        location: "Thessaloniki",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
       },
       {
-        company: "Example Company 2",
-        position: "Example Position 2",
-        start_date: "01-2020",
-        end_date: "12-2021",
-        location: "Example Location 2",
-        unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
-      },
-      {
-        company: "Example Company 3",
-        position: "Example Position 3",
-        start_date: "01-2022",
+        company: "Pythia Technologies",
+        position: "Master of Science in Library and Information Science",
+        start_date: "09/2020",
         end_date: "Present",
-        location: "Example Location 3",
+        location: "Athens",
+        unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
+      },
+      {
+        company: "Greece Tech Hub",
+        position: "Founder, Chairman",
+        start_date: "09/2020",
+        end_date: "Present",
+        location: "Athens",
+        unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
+      },
+      {
+        company: "Tech4Greece",
+        position: "Founder, CEO",
+        start_date: "09/2021",
+        end_date: "Present",
+        location: "Athens",
         unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
       },
     ];
@@ -206,9 +220,54 @@ function App() {
 
   return (
     <div className="App">
+      <div id="customize">
+        <button onClick={addDefaultProfile} id="default_profile_button">
+          <p>Default Profile</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </button>
+
+        <button id="info_button">
+          <p>Info</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </button>
+      </div>
       <div id="inputs">
         <Menu handleReset={handleReset} handleExport={handleExportImage} />
         <PersonalDetails
+          fullName={fullName}
+          email={email}
+          phone={phone}
+          address={address}
           handleChangeName={handleChangeInput}
           handleChangeEmail={handleChangeEmail}
           handleChangePhone={handleChangePhone}
@@ -226,11 +285,6 @@ function App() {
           experience={experience}
           experience_remove={experience_remove}
         />
-      </div>
-      <div id="test_buttons">
-        <button onClick={addEducationObject}>Add Education Object</button>
-        <button onClick={addExperienceObject}>Add Experience Object</button>
-        <button onClick={addDefaultProfile}>Default</button>
       </div>
       <div id="page">
         <CV

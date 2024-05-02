@@ -2,6 +2,10 @@ import "../styles/personal.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
 function PersonalDetails({
+  fullName,
+  email,
+  phone,
+  address,
   handleChangeName,
   handleChangeEmail,
   handleChangePhone,
@@ -18,6 +22,7 @@ function PersonalDetails({
             type="text"
             form="personal_details"
             id="full_name"
+            value={fullName}
             onChange={handleChangeName}
             name="full_name"
             placeholder="Full Name"
@@ -30,6 +35,7 @@ function PersonalDetails({
             type="email"
             form="personal_details"
             id="email"
+            value={email}
             name="email"
             onChange={handleChangeEmail}
             placeholder="Email"
@@ -40,6 +46,7 @@ function PersonalDetails({
           Phone Number{" "}
           <input
             type="tel"
+            value={phone}
             form="personal_details"
             id="phone_number"
             onChange={handleChangePhone}
@@ -51,12 +58,13 @@ function PersonalDetails({
         <label htmlFor="address">
           Address{" "}
           <input
+            value={address}
             type="text"
             form="personal_details"
             onChange={handleChangeAddress}
             id="address"
             name="address"
-            placeholder="Your address (Optional)"
+            placeholder="Country, City (Optional)"
           />
         </label>
 
