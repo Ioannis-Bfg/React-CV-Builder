@@ -137,12 +137,24 @@ function AddExperienceForm({ handleExpSave, toggleForm }) {
         <label htmlFor="start_date" id="start_date_exp_input">
           Start Date
         </label>
-        <input type="date" name="start_date" id="start_date_exp" required />
+        <input
+          type="month"
+          placeholder="YYYY-MM"
+          name="start_date"
+          id="start_date_exp"
+          required
+        />
 
         <label htmlFor="end_date" id="end_date_exp_input">
           End Date
         </label>
-        <input type="date" name="end_date" id="end_date_exp" required />
+        <input
+          type="month"
+          name="end_date"
+          id="end_date_exp"
+          placeholder="YYYY-MM"
+          required
+        />
 
         <label htmlFor="location" id="location_exp_input">
           Location

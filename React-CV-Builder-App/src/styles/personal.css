@@ -12,13 +12,23 @@
 
 #personal_details {
   display: flex;
-  gap: 5px;
+  gap: 8px;
   flex-direction: column;
+}
+
+#personal_details label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 #personal_details input {
   transform: translateX(3px);
   border-radius: 10px;
+  font-weight: 400;
+  padding: 8px 10px;
   /* ADD focus lighter blue color and drop shadow with blur and blue color for glow effect */
 }
 

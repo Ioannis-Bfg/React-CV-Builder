@@ -1,0 +1,124 @@
+#preview {
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  border: 4px solid #ffffff;
+  margin-top: 10px;
+  aspect-ratio: 1/1;
+  /* -webkit-box-shadow: 4px 4px 10px 3px rgba(38, 83, 179, 1);
+  box-shadow: 4px 4px 10px 3px rgba(38, 83, 179, 1); */
+  border-radius: 50%;
+  color: white;
+}
+
+#user_personal {
+  gap: 10px;
+  min-height: 200px;
+  max-height: 200px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(26, 129, 224);
+  justify-content: center;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  gap: 50px;
+  line-height: normal;
+}
+
+.info svg {
+  stroke: rgb(26, 129, 224);
+  fill: white;
+}
+
+.info {
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.info p {
+  font-size: 1.05rem;
+}
+
+.info_wrapper {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 20px;
+  color: white;
+}
+
+#user-personal_info_name {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+#user_personal_info_extra {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: flex-start;
+  justify-content: space-between;
+  justify-items: flex-start;
+  gap: 10px;
+}
+
+/* ///////////////////////////////////////// */
+
+#user_education {
+  padding: 2vh 3vw;
+  /* background-color: burlywood; */
+}
+
+#user_education_line {
+  max-width: 60px;
+  min-height: 4px;
+  border-radius: 10%;
+  background-color: rgb(120, 184, 243);
+}
+
+#user_education_heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: rgb(26, 129, 224);
+}
+
+.user_education_module {
+  display: flex;
+  padding: 1vh 1vh;
+  gap: 20px;
+}
+
+.user_education_module_right p:first-child {
+  font-weight: 800;
+}
+
+/* /////////////////////////////////// */
+
+#user_experience {
+  padding: 2vh 3vw;
+  /* background-color: burlywood; */
+}
+
+#user_experience_line {
+  max-width: 60px;
+  min-height: 4px;
+  border-radius: 10%;
+  background-color: rgb(120, 184, 243);
+}
+
+#user_experience_heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: rgb(26, 129, 224);
+}
+
+.user_experience_module {
+  display: flex;
+  padding: 1vh 1vh;
+  gap: 20px;
+}
+
+.user_experience_module_right p:first-child {
+  font-weight: 800;
+}

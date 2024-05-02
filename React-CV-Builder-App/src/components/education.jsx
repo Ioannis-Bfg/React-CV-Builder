@@ -145,12 +145,24 @@ function AddEducationForm({ handleSave, toggleForm }) {
         <label htmlFor="start_date" id="start_date_input">
           <span>Start Date</span>
         </label>
-        <input type="date" name="start_date" id="start_date" required />
+        <input
+          type="month"
+          name="start_date"
+          id="start_date"
+          placeholder="YYYY-MM"
+          required
+        />
 
         <label htmlFor="end_date" id="end_date_input">
           <span>End Date</span>
         </label>
-        <input type="date" name="end_date" id="end_date" required />
+        <input
+          type="month"
+          name="end_date"
+          id="end_date"
+          placeholder="YYYY-MM"
+          required
+        />
 
         <label htmlFor="location" id="location_input">
           <span>Location</span>

@@ -3,6 +3,7 @@ import Education from "./education";
 import Experience from "./experience";
 import CV from "./cvpage";
 import { useState } from "react";
+import html2canvas from "html2canvas";
 import "../styles/app.css";
 import Menu from "./menu";
 
@@ -14,6 +15,7 @@ function App() {
   const [education, setEducation] = useState([]);
   const [experience, setExperience] = useState([]);
   const [showEducationForm, setShowEducationForm] = useState(false);
+  const [previewSrc, setPreviewSrc] = useState("");
 
   const handleChangeInput = (event) => {
     setFullName(event.target.value);
@@ -66,8 +68,8 @@ function App() {
     const educationObject = {
       school: "Example School",
       degree: "Example Degree",
-      start_date: "2021-01-01",
-      end_date: "2022-12-31",
+      start_date: "01/2020",
+      end_date: "12/2020",
       location: "Example Location",
       unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
     };
@@ -79,8 +81,8 @@ function App() {
     const experienceObject = {
       company: "Example Company",
       position: "Example Position",
-      start_date: "2021-01-01",
-      end_date: "2022-12-31",
+      start_date: "01-2020",
+      end_date: "12-2020",
       location: "Example Location",
       unique_id: crypto.getRandomValues(new Uint32Array(1))[0],
     };
@@ -113,15 +115,48 @@ function App() {
     setShowEducationForm(false);
   };
 
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      setPreviewSrc(e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  function handleExportImage() {
+    const pageElement = document.getElementById("page");
+
+    // Trigger a reflow before capturing the content
+    pageElement.offsetHeight; // Forces a reflow on the page
+
+    html2canvas(pageElement, {
+      scale: 4,
+      backgroundColor: "#fff",
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const img = new Image();
+      img.src = imgData;
+
+      const link = document.createElement("a");
+      link.download = "page_image.png";
+      link.href = imgData;
+      link.click();
+    });
+  }
+
   return (
     <div className="App">
       <div id="inputs">
-        <Menu handleReset={handleReset} />
+        <Menu handleReset={handleReset} handleExport={handleExportImage} />
         <PersonalDetails
           handleChangeName={handleChangeInput}
           handleChangeEmail={handleChangeEmail}
           handleChangePhone={handleChangePhone}
           handleChangeAddress={handleChangeAddress}
+          handleImageUpload={handleImageUpload}
         />
         <Education
           handleSave={handleSave}
@@ -148,6 +183,7 @@ function App() {
           address={address}
           education={education}
           experience={experience}
+          previewSrc={previewSrc}
         />
       </div>
     </div>
