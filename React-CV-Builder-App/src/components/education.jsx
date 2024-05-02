@@ -67,7 +67,7 @@ function Education({ handleSave, education, education_remove }) {
           <AddEducationForm handleSave={handleSave} toggleForm={toggleForm} />
         ) : (
           <>
-            <div id="education_list" style={educationListStyle}>
+            <div id="education_list_wrapper" style={educationListStyle}>
               <EducationList
                 education={education}
                 education_remove={education_remove}
@@ -121,50 +121,47 @@ function AddEducationForm({ handleSave, toggleForm }) {
       <form onSubmit={handleSubmit} id="education_form">
         <label htmlFor="school" id="school_input">
           <span>School</span>
-          <input
-            type="text"
-            name="school"
-            id="school"
-            placeholder="School Name"
-            required
-          />
         </label>
+
+        <input
+          type="text"
+          name="school"
+          id="school"
+          placeholder="School Name"
+          required
+        />
 
         <label htmlFor="degree" id="degree_input">
           <span>Degree</span>
-          <input
-            type="text"
-            name="degree"
-            id="degree"
-            placeholder="Degree Obtained"
-            required
-          />
         </label>
+        <input
+          type="text"
+          name="degree"
+          id="degree"
+          placeholder="Degree Obtained"
+          required
+        />
 
-        <label
-          htmlFor="start_date"
-          id="start
-          _date_input"
-        >
+        <label htmlFor="start_date" id="start_date_input">
           <span>Start Date</span>
-          <input type="date" name="start_date" id="start_date" required />
         </label>
+        <input type="date" name="start_date" id="start_date" required />
 
         <label htmlFor="end_date" id="end_date_input">
           <span>End Date</span>
-          <input type="date" name="end_date" id="end_date" required />
         </label>
+        <input type="date" name="end_date" id="end_date" required />
 
         <label htmlFor="location" id="location_input">
           <span>Location</span>
-          <input
-            type="text"
-            name="location"
-            id="location"
-            placeholder="Location"
-            required
-          />
         </label>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          placeholder="Location"
+          required
+        />
 
         <button type="button" id="edu_cancel" onClick={toggleForm}>
           Cancel

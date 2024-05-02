@@ -4,6 +4,7 @@ import Experience from "./experience";
 import CV from "./cvpage";
 import { useState } from "react";
 import "../styles/app.css";
+import Menu from "./menu";
 
 function App() {
   const [fullName, setFullName] = useState("");
@@ -115,6 +116,7 @@ function App() {
   return (
     <div className="App">
       <div id="inputs">
+        <Menu handleReset={handleReset} />
         <PersonalDetails
           handleChangeName={handleChangeInput}
           handleChangeEmail={handleChangeEmail}
@@ -133,10 +135,12 @@ function App() {
           experience_remove={experience_remove}
         />
       </div>
-      <div id="page">
+      <div id="test_buttons">
         <button onClick={addEducationObject}>Add Education Object</button>
         <button onClick={addExperienceObject}>Add Experience Object</button>
         <button onClick={handleReset}>Reset</button>
+      </div>
+      <div id="page">
         <CV
           fullName={fullName}
           email={email}

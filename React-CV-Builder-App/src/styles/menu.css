@@ -1,0 +1,86 @@
+#menu {
+  flex: 1;
+  display: flex;
+  padding: 20px;
+  justify-content: space-around;
+  background-color: white;
+  color: rgb(32, 32, 32);
+  border-radius: 10px;
+  margin: 10px;
+  gap: 20px;
+}
+
+#menu button {
+  flex: 1;
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+#reset_button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  grid-column: 2 / span 1;
+  border: 1px solid rgb(56, 56, 56);
+  color: hsla(0, 0%, 21%, 0.87);
+  font-weight: 600;
+  border-radius: 10px;
+  transition: color 0.1s ease-in, border 0.1s ease-in;
+}
+
+#reset_button svg {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in;
+}
+
+#reset_button:hover {
+  color: hsl(0, 0%, 15%);
+  border: 1px solid hsla(0, 0%, 22%, 0.979);
+  transition: color 0.3s ease-out, border 0.3s ease-out;
+}
+
+#reset_button:hover svg {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease-out;
+}
+
+#reset_button:active {
+  transform: translateY(2px);
+  transition: transform 0.3s ease-out;
+}
+
+#export_button {
+  background-color: hsl(209, 78%, 60%);
+  border: none;
+  cursor: pointer;
+  grid-column: 3 / span 2;
+
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background-color 0.1s ease-in, transform 0.1s ease-out;
+}
+
+#export_button svg {
+  transform: translateX(0px);
+  transition: transform 0.2s ease-in;
+}
+
+#export_button:hover svg {
+  transform: translateX(-3px);
+  transition: transform 0.5s ease-out;
+}
+
+#export_button:active {
+  transform: translateY(2px);
+  transition: transform 0.3s ease-out;
+}
+
+#export_button:hover {
+  background-color: rgb(26, 129, 224);
+  transition: background-color 0.3s ease-out;
+}

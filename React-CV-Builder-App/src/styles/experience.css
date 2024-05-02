@@ -7,6 +7,7 @@
   gap: 0px;
   /* padding-top: 10px; */
   border-radius: 10px;
+  color: rgb(27, 27, 27);
 }
 
 #header_experience {
@@ -25,11 +26,12 @@
 }
 
 #header_experience:hover {
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(243, 243, 243);
   transition: background-color 0.6s ease;
 }
 
 #header_experience h2 {
+  user-select: none;
   font-weight: 800;
   font-size: 1.4rem;
 }
@@ -53,16 +55,14 @@
   transform: rotate(90deg);
 }
 
-#edu_dropdown_icon {
+#exp_dropdown_icon {
   transform: rotate(90deg);
   transform-origin: center;
   transition: transform 0.3s ease;
 }
 
-#edu_dropdown {
+#exp_dropdown {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* ///////////EDUCATION FORM/////////////// */
@@ -70,27 +70,65 @@
 #experience_form {
   display: grid;
   grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   background-color: white;
   padding: 15px;
+  color: rgb(27, 27, 27);
+  font-weight: 700;
 }
 #experience_form input {
   border-radius: 8px;
+  font-weight: 500;
 }
-#school_input {
-  grid-column: 1 / span 2;
+#company_input {
+  grid-column: 1 / span 1;
   grid-row: 1;
   display: flex;
 }
 
-#degree_input {
-  grid-column: 1 / span 2;
+#company {
+  grid-column: 2 / span 3;
+}
+
+#position_input {
+  grid-column: 1 / span 1;
   grid-row: 2;
 }
 
-#location_input {
-  grid-column: 1 / span 2;
+#position {
+  grid-column: 2 / span 3;
+}
+
+#start_date_exp_input {
+  font-size: 0.9rem;
+  grid-column: 1 / span 1;
+  grid-row: 3;
+}
+
+#start_date_exp {
+  grid-column: 2 / span 1;
+  grid-row: 3;
+}
+
+#end_date_exp_input {
+  font-size: 0.9rem;
+  grid-column: 3 / span 1;
+  grid-row: 3;
+}
+
+#end_date_exp {
+  grid-column: 4 / span 1;
+  grid-row: 3;
+}
+
+#location_exp_input {
+  grid-column: 1 / span 1;
+  grid-row: 4;
+}
+
+#location_exp {
+  grid-column: 2 / span 3;
   grid-row: 4;
 }
 
@@ -105,22 +143,24 @@ input {
   width: 100%;
 }
 
-#education_form button {
+#experience_form button {
   cursor: pointer;
 }
 
-#edu_cancel {
+#exp_cancel {
   background-color: transparent;
   border: none;
   border: 1px solid rgb(56, 56, 56);
   color: hsla(0, 0%, 21%, 0.541);
   font-weight: 600;
+  grid-column: 2 / span 1;
   border-radius: 10px;
   transition: color 0.1s ease-in, border 0.1s ease-in;
 }
 
-#edu_save {
+#exp_save {
   background-color: rgb(75, 156, 233);
+  grid-column: 3 / span 2;
   border: none;
   color: white;
   border-radius: 10px;
@@ -128,28 +168,36 @@ input {
   transition: background-color 0.1s ease-in, transform 0.1s ease-out;
 }
 
-#edu_save:active {
+#exp_save:active {
   transform: translateY(2px);
   transition: transform 0.3s ease-out;
 }
 
-#edu_save:hover {
+#exp_save:hover {
   background-color: rgb(26, 129, 224);
   transition: background-color 0.3s ease-out;
 }
 
-#edu_cancel:hover {
+#exp_cancel:hover {
   color: hsla(0, 0%, 21%, 0.836);
   border: 1px solid hsla(0, 0%, 22%, 0.733);
   transition: color 0.3s ease-out, border 0.3s ease-out;
 }
 
-#edu_cancel:active {
+#exp_cancel:active {
   transform: translateY(2px);
   transition: transform 0.3s ease-out;
 }
 
 /* ////////EDUCATION LIST ///////////////*/
+
+#experience_list_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+}
 
 #experience_list {
   display: flex;
@@ -187,7 +235,7 @@ input {
   transition: opacity 0.25s ease;
 }
 
-/* /////////////////EDUCATION BUTTON///////// */
+/* /////////////////EXP BUTTON///////// */
 
 #add_experience_button_wrapper {
   background-color: white;
@@ -211,6 +259,8 @@ input {
   background-color: white;
   font-weight: 600;
   font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
 }
 
 #add_experience_button svg {
@@ -218,8 +268,15 @@ input {
   height: 15px;
 }
 
+#add_experience_button:hover {
+  /* border: 6px solid hsla(209, 78%, 60%, 0.664); */
+  background-color: hsl(209, 78%, 60%);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.4s ease-out, color 0.4s ease-out;
+}
+
 /* //////////////// DROPDOWN//////////// */
-#dropdown_content {
+#exp_dropdown {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
@@ -228,23 +285,23 @@ input {
   transition: max-height 0.25s ease-out, opacity 0.25s ease-in;
 }
 
-#dropdown_content.expanded {
-  max-height: 500px; /* Adjust as needed for your content */
+#exp_dropdown.expanded_exp {
+  max-height: 2000px;
   opacity: 1;
   transition: max-height 0.25s ease-in, opacity 0.25s ease-in;
 }
 
 /* //////////////////////// */
-#edu_dropdown_icon.rotated {
+#exp_dropdown_icon.rotated_exp {
   transform: rotate(-90deg);
   transition: transform 0.3s ease;
 }
-.rounded {
+.rounded_exp {
   border-bottom-right-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
   transition: border-radius 0.2s ease-in;
 }
 
-.rounded:hover {
+.rounded_exp:hover {
   background-color: white !important;
 }

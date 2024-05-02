@@ -6,9 +6,21 @@ function Experience({ handleExpSave, experience, experience_remove }) {
   const toggleForm = () => {
     setShowForm(!showForm);
   };
+  const experienceListStyle = {
+    display: experience.length > 0 ? "block" : "none",
+  };
+
+  const expDropdown = () => {
+    const dropdownContent = document.querySelector("#exp_dropdown");
+    const exp_dropdown_icon = document.querySelector("#exp_dropdown_icon");
+    const header_experience = document.querySelector("#header_experience");
+    dropdownContent.classList.toggle("expanded_exp");
+    exp_dropdown_icon.classList.toggle("rotated_exp");
+    header_experience.classList.toggle("rounded_exp");
+  };
   return (
     <div id="experience">
-      <div id="header_experience">
+      <div id="header_experience" onClick={expDropdown}>
         <div id="header_experience_title">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +42,7 @@ function Experience({ handleExpSave, experience, experience_remove }) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
+          id="exp_dropdown_icon"
           height="24"
           viewBox="0 0 24 24"
           fill="none"
@@ -41,43 +54,49 @@ function Experience({ handleExpSave, experience, experience_remove }) {
           <polyline points="6 18 12 12 6 6"></polyline>
         </svg>
       </div>
-      {showForm ? (
-        <AddExperienceForm
-          handleExpSave={handleExpSave}
-          toggleForm={toggleForm}
-        />
-      ) : (
-        <>
-          <ExperienceList
-            experience={experience}
-            experience_remove={experience_remove}
+      <div id="exp_dropdown">
+        {showForm ? (
+          <AddExperienceForm
+            handleExpSave={handleExpSave}
+            toggleForm={toggleForm}
           />
-          <AddExperience handleSwitch={toggleForm} />
-        </>
-      )}
+        ) : (
+          <>
+            <div id="experience_list_wrapper" style={experienceListStyle}>
+              <ExperienceList
+                experience={experience}
+                experience_remove={experience_remove}
+              />
+            </div>
+            <AddExperience handleSwitch={toggleForm} />
+          </>
+        )}
+      </div>
     </div>
   );
 }
 
 function AddExperience({ handleSwitch }) {
   return (
-    <button id="add_experience_button" onClick={handleSwitch}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <line x1="12" y1="5" x2="12" y2="19"></line>
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-      </svg>
-      Add Experience
-    </button>
+    <div id="add_experience_button_wrapper">
+      <button id="add_experience_button" onClick={handleSwitch}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Experience
+      </button>
+    </div>
   );
 }
 
@@ -87,21 +106,26 @@ function AddExperienceForm({ handleExpSave, toggleForm }) {
     handleExpSave(event);
     toggleForm();
   }
+
+  function handleCancel(event) {
+    event.preventDefault();
+    toggleForm();
+  }
   return (
     <div id="add_experience_form">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="company" id="experience_form">
+      <form onSubmit={handleSubmit} id="experience_form">
+        <label htmlFor="company" id="company_input">
           Company
         </label>
         <input
           type="text"
-          name="company"
           id="company"
+          name="company"
           placeholder="Company Name"
           required
         />
 
-        <label htmlFor="position">Position</label>
+        <label id="position_input">Position</label>
         <input
           type="text"
           name="position"
@@ -110,24 +134,31 @@ function AddExperienceForm({ handleExpSave, toggleForm }) {
           required
         />
 
-        <label htmlFor="start_date">Start Date</label>
-        <input type="date" name="start_date" id="start_date" required />
+        <label htmlFor="start_date" id="start_date_exp_input">
+          Start Date
+        </label>
+        <input type="date" name="start_date" id="start_date_exp" required />
 
-        <label htmlFor="end_date">End Date</label>
-        <input type="date" name="end_date" id="end_date" required />
+        <label htmlFor="end_date" id="end_date_exp_input">
+          End Date
+        </label>
+        <input type="date" name="end_date" id="end_date_exp" required />
 
-        <label htmlFor="location">Location</label>
+        <label htmlFor="location" id="location_exp_input">
+          Location
+        </label>
         <input
           type="text"
+          id="location_exp"
           name="location"
-          id="location"
           placeholder="Location"
           required
         />
-
-        <button type="submit">Save</button>
-        <button type="button" onClick={toggleForm}>
+        <button type="button" onClick={toggleForm} id="exp_cancel">
           Cancel
+        </button>
+        <button type="submit" id="exp_save">
+          Save
         </button>
       </form>
     </div>
@@ -140,7 +171,7 @@ function ExperienceList({ experience, experience_remove }) {
         <div className="experience_item" key={item.unique_id}>
           <p>{item.company}</p>
           <button
-            id="exp_view"
+            className="exp_view"
             onClick={() => experience_remove(item.unique_id)}
           >
             <svg
@@ -153,7 +184,7 @@ function ExperienceList({ experience, experience_remove }) {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              class="feather feather-trash-2"
+              className="feather feather-trash-2"
             >
               <polyline points="3 6 5 6 21 6"></polyline>
               <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>

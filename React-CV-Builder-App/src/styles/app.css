@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   background-color: rgb(226, 226, 226);
-  height: 100vh;
+  min-height: 100vh;
   padding: 4vh 20vw;
   gap: 50px;
   font-family: sans-serif;
@@ -14,9 +14,19 @@
   flex-direction: column;
   height: fit-content;
 }
+
 #page {
   flex: 4;
   background-color: white;
+}
+
+#test_buttons {
+  position: absolute;
+  left: 0;
+}
+
+input:focus {
+  outline: 2px solid hsl(209, 78%, 60%);
 }
 
 input {
